@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="AVIATION_COSTARICAModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AIRPORTS">
+          <Key>
+            <PropertyRef Name="IdAirport" />
+          </Key>
+          <Property Name="IdAirport" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CodeAirport" Type="nvarchar" MaxLength="20" />
+          <Property Name="NameAirport" Type="nvarchar" MaxLength="100" />
+          <Property Name="AddressAirport" Type="nvarchar" MaxLength="200" />
+          <Property Name="CountryAirport" Type="nvarchar" MaxLength="25" />
+          <Property Name="CityAirport" Type="nvarchar" MaxLength="25" />
+        </EntityType>
+        <Function Name="GetAllAirports" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="AVIATION_COSTARICAModelStoreContainer">
+          <EntitySet Name="AIRPORTS" EntityType="Self.AIRPORTS" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AVIATION_COSTARICAModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AIRPORTS">
+          <Key>
+            <PropertyRef Name="IdAirport" />
+          </Key>
+          <Property Name="IdAirport" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CodeAirport" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="NameAirport" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="AddressAirport" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="CountryAirport" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="CityAirport" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="AVIATION_COSTARICAEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AIRPORTS" EntityType="Self.AIRPORTS" />
+          <FunctionImport Name="GetAllAirports" ReturnType="Collection(AVIATION_COSTARICAModel.GetAllAirports_Result)" />
+        </EntityContainer>
+        <ComplexType Name="GetAllAirports_Result">
+          <Property Type="Int32" Name="IdAirport" Nullable="false" />
+          <Property Type="String" Name="CodeAirport" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="NameAirport" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="AddressAirport" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="CountryAirport" Nullable="true" MaxLength="25" />
+          <Property Type="String" Name="CityAirport" Nullable="true" MaxLength="25" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AVIATION_COSTARICAModelStoreContainer" CdmEntityContainer="AVIATION_COSTARICAEntities">
+          <EntitySetMapping Name="AIRPORTS">
+            <EntityTypeMapping TypeName="AVIATION_COSTARICAModel.AIRPORTS">
+              <MappingFragment StoreEntitySet="AIRPORTS">
+                <ScalarProperty Name="IdAirport" ColumnName="IdAirport" />
+                <ScalarProperty Name="CodeAirport" ColumnName="CodeAirport" />
+                <ScalarProperty Name="NameAirport" ColumnName="NameAirport" />
+                <ScalarProperty Name="AddressAirport" ColumnName="AddressAirport" />
+                <ScalarProperty Name="CountryAirport" ColumnName="CountryAirport" />
+                <ScalarProperty Name="CityAirport" ColumnName="CityAirport" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetAllAirports" FunctionName="AVIATION_COSTARICAModel.Store.GetAllAirports">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AVIATION_COSTARICAModel.GetAllAirports_Result">
+                <ScalarProperty Name="IdAirport" ColumnName="IdAirport" />
+                <ScalarProperty Name="CodeAirport" ColumnName="CodeAirport" />
+                <ScalarProperty Name="NameAirport" ColumnName="NameAirport" />
+                <ScalarProperty Name="AddressAirport" ColumnName="AddressAirport" />
+                <ScalarProperty Name="CountryAirport" ColumnName="CountryAirport" />
+                <ScalarProperty Name="CityAirport" ColumnName="CityAirport" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
